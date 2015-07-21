@@ -6,16 +6,12 @@
 	<script type="text/javascript" src="workers.js"></script>
 	<script type="text/javascript">
 		console.log(new AjaxWorker().ajax({
-		data:  {},
-		url:   'www.github.com',
+		data:  {1:"a",2:"b"},
+		url:   'index.html',
 		type:  'post',
 		async: false,
 		success:  function (response) {
-			$('#carga').fadeOut(200);
-			response = $.parseJSON(response);
-			$.each(response, function(i, item) {
-				proyecto.append($("<option />").val(item.ID).text(item.DESCR));
-			});
+			console.log(response);
 		}
 	}));
 	</script>

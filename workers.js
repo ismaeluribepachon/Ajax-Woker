@@ -7,12 +7,14 @@ function AjaxWorker(){
 
 	if(typeof Worker !== 'undefined'){
 
-		this.w = new Worker("js/ajax.js");
+		this.w = new Worker("ajax.js");
 		this.ajax = function(request){
 
 			console.log({data : request.data, url : request.url, type : request.type, async : request.async});
 			this.w.postMessage({data : request.data, url : request.url, type : request.type, async : request.async});
+
 		}
+		
 		this.w.addEventListener('message', function(e){
 			request.success(e.response);
 		}, false);
